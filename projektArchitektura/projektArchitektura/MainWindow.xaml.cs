@@ -45,6 +45,18 @@ namespace projektArchitektura
 
         private void commandSubmit_Click(object sender, RoutedEventArgs e)
         {
+            var ax = axLab;
+            var ah = ahLab;
+            var al = alLab;
+            var bx = bxLab;
+            var bh = bhLab;
+            var bl = blLab;
+            var cx = cxLab;
+            var ch = chLab;
+            var cl = clLab;
+            var dx = dxLab;
+            var dh = dhLab;
+            var dl = dlLab;
             string input = commandInput.Text;
             if (!Check(input))
             {
@@ -56,16 +68,70 @@ namespace projektArchitektura
                 commandTab[0] = input.Substring(0, input.IndexOf(' '));
                 commandTab[1] = input.Substring(input.IndexOf(' ') + 1, input.IndexOf(',') - input.IndexOf(' ') - 1);
                 commandTab[2] = input.Substring(input.IndexOf(',') + 1);
-                axLab.Content = commandTab[0];
-                bxLab.Content = commandTab[1];
-                cxLab.Content = commandTab[2];
+                //axLab.Content = commandTab[0];
+                //bxLab.Content = commandTab[1];
+                //cxLab.Content = commandTab[2];
+                if (!valueCheck(commandTab[2]))
+                {
+                    commandInput.Text = "Liczba spoza zakresu";
+                }
+                else
+                {
+                    if (commandTab[0] == "MOV" || commandTab[0] == "mov")
+                    {
+                        if (commandTab[1] == "AX" || commandTab[1] == "ax")
+                        {
+
+                        }
+                        if (commandTab[1] == "BX" || commandTab[1] == "bx")
+                        {
+
+                        }
+                        if (commandTab[1] == "CX" || commandTab[1] == "cx")
+                        {
+
+                        }
+                        if (commandTab[1] == "DX" || commandTab[1] == "dx")
+                        {
+
+                        }
+
+                    }
+                    else if (commandTab[0] == "SWAP" || commandTab[0] == "swap")
+                    {
+                        axLab.Content = "dziala swap";
+                    }
+                    else
+                    {
+                        commandInput.Text = "Niepoprawna komenda";
+                    }
+                }
             }
+
             bool Check(string x)
             {
                 bool a = x.Contains(' ');
                 bool b = x.Contains(',');
                 if (a && b && input.IndexOf(' ') < input.IndexOf(',')) return true;
                 else return false;
+            }
+            bool valueCheck(string x)
+            {
+                //char[] tab = x.ToCharArray();
+                //bool temp = true;
+                //foreach(char z in tab)
+                //{
+                //    if (!char.IsDigit(z)) temp = false;
+                //}
+                int y = Int32.Parse(x,System.Globalization.NumberStyles.HexNumber);
+                if ((y < 65536) && (y > 0))
+                    return true;
+                else
+                    return false;
+            }
+            void Move(Label x)
+            {
+                x.Content = "x";
             }
         }
         private int randomValues()
