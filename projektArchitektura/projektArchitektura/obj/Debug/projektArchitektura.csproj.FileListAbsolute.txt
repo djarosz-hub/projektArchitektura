@@ -1,0 +1,15 @@
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\bin\Debug\projektArchitektura.exe.config
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\bin\Debug\projektArchitektura.exe
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\bin\Debug\projektArchitektura.pdb
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.csprojAssemblyReference.cache
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\MainWindow.g.cs
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\App.g.cs
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura_MarkupCompile.cache
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura_MarkupCompile.lref
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\MainWindow.baml
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.g.resources
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.Properties.Resources.resources
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.csproj.GenerateResource.cache
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.csproj.CoreCompileInputs.cache
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.exe
+C:\Users\jaros\Desktop\projektArchitektura\projektArchitektura\projektArchitektura\obj\Debug\projektArchitektura.pdb
