@@ -84,6 +84,8 @@ namespace projektArchitektura
                         }
                         else
                             commandInput.Text = "Niepoprawne dane";
+                        string binVal = Revalue(ax);
+                        halfR(binVal, ah, al);
                     }
                     if (commandTab[1] == "BX" || commandTab[1] == "bx")
                     {
@@ -97,6 +99,8 @@ namespace projektArchitektura
                         }
                         else
                             commandInput.Text = "Niepoprawne dane";
+                        string binVal = Revalue(bx);
+                        halfR(binVal, bh, bl);
                     }
                     if (commandTab[1] == "CX" || commandTab[1] == "cx")
                     {
@@ -110,6 +114,8 @@ namespace projektArchitektura
                         }
                         else
                             commandInput.Text = "Niepoprawne dane";
+                        string binVal = Revalue(cx);
+                        halfR(binVal, ch, cl);
                     }
                     if (commandTab[1] == "DX" || commandTab[1] == "dx")
                     {
@@ -123,7 +129,138 @@ namespace projektArchitektura
                         }
                         else
                             commandInput.Text = "Niepoprawne dane";
+                        string binVal = Revalue(dx);
+                        halfR(binVal, dh, dl);
                     }
+                    if (commandTab[1] == "AH" || commandTab[1] == "ah")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(ah, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(ah, commandTab[2]);
+                            HalfRevalue(ax, ah, al);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "AL" || commandTab[1] == "al")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(al, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(al, commandTab[2]);
+                            HalfRevalue(ax, ah, al);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "BH" || commandTab[1] == "bh")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(bh, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(bh, commandTab[2]);
+                            HalfRevalue(bx, bh, bl);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "BL" || commandTab[1] == "bl")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(bl, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(bl, commandTab[2]);
+                            HalfRevalue(bx, bh, bl);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "CH" || commandTab[1] == "ch")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(ch, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(ch, commandTab[2]);
+                            HalfRevalue(cx, ch, cl);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "CL" || commandTab[1] == "cl")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(cl, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(cl, commandTab[2]);
+                            HalfRevalue(cx, ch, cl);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "DH" || commandTab[1] == "dh")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(dh, commandTab[2]);
+                        }
+                        else if (HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(dh, commandTab[2]);
+                            HalfRevalue(dx, dh, dl);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+                    if (commandTab[1] == "DL" || commandTab[1] == "dl")
+                    {
+                        if (HalfValToMove(commandTab[2]))
+                        {
+                            HalfMove(dl, commandTab[2]);
+                        }
+                        else if(HalfValueCheck(commandTab[2]))
+                        {
+                            HalfInput(dl, commandTab[2]);
+                            HalfRevalue(dx, dh, dl);
+                        }
+                        else
+                        {
+                            commandInput.Text = "Niepoprawna wartosc";
+                        }
+                    }
+
                 }
                 else if (commandTab[0] == "SWAP" || commandTab[0] == "swap")
                 {
@@ -134,6 +271,100 @@ namespace projektArchitektura
                     commandInput.Text = "Niepoprawna komenda";
                 }
 
+            }
+            void HalfRevalue(Label r, Label h, Label l)
+            {
+                string high = (string)h.Content;
+                string low = (string)l.Content;
+                string sum = high + low;
+                string val_16 = Convert.ToInt32(sum, 2).ToString("X");
+                r.Content = val_16;
+            }
+            void HalfInput(Label x, string val)
+            {
+                x.Content = Convert.ToString(Convert.ToInt32(val, 16),2);
+            }
+            void HalfMove(Label x, string val)
+            {
+                switch (val)
+                {
+                   
+                    case "AH":
+                        x.Content = ahLab.Content;
+                        break;
+                    case "ah":
+                        x.Content = ahLab.Content;
+                        break;
+                    case "AL":
+                        x.Content = alLab.Content;
+                        break;
+                    case "al":
+                        x.Content = alLab.Content;
+                        break;
+                    case "BH":
+                        x.Content = bhLab.Content;
+                        break;
+                    case "bh":
+                        x.Content = bhLab.Content;
+                        break;
+                    case "BL":
+                        x.Content = blLab.Content;
+                        break;
+                    case "bl":
+                        x.Content = blLab.Content;
+                        break;
+                    case "CH":
+                        x.Content = chLab.Content;
+                        break;
+                    case "ch":
+                        x.Content = chLab.Content;
+                        break;
+                    case "CL":
+                        x.Content = clLab.Content;
+                        break;
+                    case "cl":
+                        x.Content = clLab.Content;
+                        break;
+                    case "DH":
+                        x.Content = dhLab.Content;
+                        break;
+                    case "dh":
+                        x.Content = dhLab.Content;
+                        break;
+                    case "DL":
+                        x.Content = dlLab.Content;
+                        break;
+                    case "dl":
+                        x.Content = dlLab.Content;
+                        break;
+                }
+                    HalfRevalue(ax,ah,al);
+                    HalfRevalue(bx,bh,bl);
+                    HalfRevalue(cx,ch,cl);
+                    HalfRevalue(dx,dh,dl);
+            }
+            bool HalfValToMove(string val)
+            {
+                int flag = 0;
+                string[] dic = new string[] { "AH", "ah", "AL", "al", "BH", "bh", "BL", "bl", "CH", "ch", "CL", "cl", "DH", "dh", "DL", "dl" };
+                foreach (string x in dic)
+                {
+                    if (val.Contains(x))
+                    {
+                        flag = 1;
+                        break;
+                    }
+                }
+                return flag == 1 ? true : false;
+            }
+            bool HalfValueCheck(string x)
+            {
+                int y = Convert.ToInt32(x, 16);
+                if ((y < 256) && (y > 0))
+                    return true;
+                else
+                    commandInput.Text = "Liczba spoza zakresu";
+                return false;
             }
             bool ValueToMove(string val)
             {
@@ -245,9 +476,6 @@ namespace projektArchitektura
                     case "dl":
                         x.Content = dlLab.Content;
                         break;
-                    default:
-                        commandInput.Text = val+"wtf";
-                        break;
                 }
             }
         }
@@ -256,6 +484,17 @@ namespace projektArchitektura
             Random rnd = new Random();
             int val = rnd.Next(0, 65536);
             return val;
+        }
+        string Revalue(Label x)
+        {
+            string val_16 = (string)x.Content;
+            string val_2 = Convert.ToString(Convert.ToInt32(val_16,16),2);
+            return val_2;
+        }
+        void halfR (string valBin, Label h, Label l )
+        {
+            h.Content = valBin.Substring(0, valBin.Length - 8);
+            l.Content = valBin.Substring(valBin.Length - 8);
         }
 
         private void randomR_Click(object sender, RoutedEventArgs e)

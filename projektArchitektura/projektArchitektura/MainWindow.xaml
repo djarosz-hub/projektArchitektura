@@ -17,7 +17,7 @@
 
         </Grid.ColumnDefinitions>
         <Image HorizontalAlignment="Left" Height="90" Margin="333,454,0,0" VerticalAlignment="Top" Width="90" Source="C:\Users\jaros\Desktop\projektArchitektura\logoWsei.png"/>
-        <Label Content="Wykonał Damian Jarosz" HorizontalAlignment="Left" Margin="10,513,0,0" VerticalAlignment="Top" Width="147" Height="31"/>
+        <Label Content="Wykonał Damian Jarosz nr albumu 12573" HorizontalAlignment="Left" Margin="10,513,0,0" VerticalAlignment="Top" Width="230" Height="31"/>
         <TextBlock Margin="10,22,-7.109,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="423" FontSize="17" HorizontalAlignment="Left" FontWeight="Bold" Grid.ColumnSpan="2"><Run Text="Symulator komendy MOV w "/><Run Text="procesorze Intel 8080"/></TextBlock>
         <Label Content="Podaj komendę:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="159" Height="42" FontSize="18"/>
         <TextBox x:Name="commandInput" HorizontalAlignment="Left" Height="23" Margin="154,69,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="143"/>
