@@ -30,13 +30,13 @@ namespace projektArchitektura
         {
             axLab.Content = "";
             ahLab.Content = "";
-            alLab.Content = ""; 
+            alLab.Content = "";
             bxLab.Content = "";
             bhLab.Content = "";
-            blLab.Content = ""; 
+            blLab.Content = "";
             cxLab.Content = "";
             chLab.Content = "";
-            clLab.Content = ""; 
+            clLab.Content = "";
             dxLab.Content = "";
             dhLab.Content = "";
             dlLab.Content = "";
@@ -68,46 +68,87 @@ namespace projektArchitektura
                 commandTab[0] = input.Substring(0, input.IndexOf(' '));
                 commandTab[1] = input.Substring(input.IndexOf(' ') + 1, input.IndexOf(',') - input.IndexOf(' ') - 1);
                 commandTab[2] = input.Substring(input.IndexOf(',') + 1);
-                //axLab.Content = commandTab[0];
-                //bxLab.Content = commandTab[1];
-                //cxLab.Content = commandTab[2];
-                if (!valueCheck(commandTab[2]))
+                commandTab[2] = commandTab[2].Trim();
+                if (commandTab[0] == "MOV" || commandTab[0] == "mov")
                 {
-                    commandInput.Text = "Liczba spoza zakresu";
+
+                    if (commandTab[1] == "AX" || commandTab[1] == "ax")
+                    {
+                        if (ValueToMove(commandTab[2]))
+                        {
+                            MoveR(ax, commandTab[2]);
+                        }
+                        else if (ValueCheck(commandTab[2]))
+                        {
+                            Move(ax, commandTab[2]);
+                        }
+                        else
+                            commandInput.Text = "Niepoprawne dane";
+                    }
+                    if (commandTab[1] == "BX" || commandTab[1] == "bx")
+                    {
+                        if (ValueToMove(commandTab[2]))
+                        {
+                            MoveR(bx, commandTab[2]);
+                        }
+                        else if (ValueCheck(commandTab[2]))
+                        {
+                            Move(bx, commandTab[2]);
+                        }
+                        else
+                            commandInput.Text = "Niepoprawne dane";
+                    }
+                    if (commandTab[1] == "CX" || commandTab[1] == "cx")
+                    {
+                        if (ValueToMove(commandTab[2]))
+                        {
+                            MoveR(cx, commandTab[2]);
+                        }
+                        else if (ValueCheck(commandTab[2]))
+                        {
+                            Move(cx, commandTab[2]);
+                        }
+                        else
+                            commandInput.Text = "Niepoprawne dane";
+                    }
+                    if (commandTab[1] == "DX" || commandTab[1] == "dx")
+                    {
+                        if (ValueToMove(commandTab[2]))
+                        {
+                            MoveR(dx, commandTab[2]);
+                        }
+                        else if (ValueCheck(commandTab[2]))
+                        {
+                            Move(dx, commandTab[2]);
+                        }
+                        else
+                            commandInput.Text = "Niepoprawne dane";
+                    }
+                }
+                else if (commandTab[0] == "SWAP" || commandTab[0] == "swap")
+                {
+                    axLab.Content = "dziala swap";
                 }
                 else
                 {
-                    if (commandTab[0] == "MOV" || commandTab[0] == "mov")
+                    commandInput.Text = "Niepoprawna komenda";
+                }
+
+            }
+            bool ValueToMove(string val)
+            {
+                int flag = 0;
+                string[] dic = new string[] { "AX", "BX", "CX", "DX", "ax", "bx", "cx", "dx", "AH", "ah", "AL", "al", "BH", "bh", "BL", "bl", "CH", "ch", "CL", "cl", "DH", "dh", "DL", "dl" };
+                foreach (string x in dic)
+                {
+                    if (val.Contains(x))
                     {
-                        if (commandTab[1] == "AX" || commandTab[1] == "ax")
-                        {
-
-                        }
-                        if (commandTab[1] == "BX" || commandTab[1] == "bx")
-                        {
-
-                        }
-                        if (commandTab[1] == "CX" || commandTab[1] == "cx")
-                        {
-
-                        }
-                        if (commandTab[1] == "DX" || commandTab[1] == "dx")
-                        {
-
-                        }
-
-                    }
-                    else if (commandTab[0] == "SWAP" || commandTab[0] == "swap")
-                    {
-                        axLab.Content = "dziala swap";
-                    }
-                    else
-                    {
-                        commandInput.Text = "Niepoprawna komenda";
+                        flag = 1;
+                        break;
                     }
                 }
+                return flag == 1 ? true : false;
             }
-
             bool Check(string x)
             {
                 bool a = x.Contains(' ');
@@ -115,23 +156,99 @@ namespace projektArchitektura
                 if (a && b && input.IndexOf(' ') < input.IndexOf(',')) return true;
                 else return false;
             }
-            bool valueCheck(string x)
+            bool ValueCheck(string x)
             {
-                //char[] tab = x.ToCharArray();
-                //bool temp = true;
-                //foreach(char z in tab)
-                //{
-                //    if (!char.IsDigit(z)) temp = false;
-                //}
-                int y = Int32.Parse(x,System.Globalization.NumberStyles.HexNumber);
+                int y = Int32.Parse(x, System.Globalization.NumberStyles.HexNumber);
                 if ((y < 65536) && (y > 0))
                     return true;
                 else
-                    return false;
+                    commandInput.Text = "Liczba spoza zakresu";
+                return false;
             }
-            void Move(Label x)
+            void Move(Label x, string val)
             {
-                x.Content = "x";
+                x.Content = val;
+            }
+            void MoveR(Label x, string val)
+            {
+                switch (val)
+                {
+                    case "AX":
+                        x.Content = axLab.Content;
+                        break;
+                    case "ax":
+                        x.Content = axLab.Content;
+                        break;
+                    case "AH":
+                        x.Content = ahLab.Content;
+                        break;
+                    case "ah":
+                        x.Content = ahLab.Content;
+                        break;
+                    case "AL":
+                        x.Content = alLab.Content;
+                        break;
+                    case "al":
+                        x.Content = alLab.Content;
+                        break;
+                    case "BX":
+                        x.Content = bxLab.Content;
+                        break;
+                    case "bx":
+                        x.Content = bxLab.Content;
+                        break;
+                    case "BH":
+                        x.Content = bhLab.Content;
+                        break;
+                    case "bh":
+                        x.Content = bhLab.Content;
+                        break;
+                    case "BL":
+                        x.Content = blLab.Content;
+                        break;
+                    case "bl":
+                        x.Content = blLab.Content;
+                        break;
+                    case "CX":
+                        x.Content = cxLab.Content;
+                        break;
+                    case "cx":
+                        x.Content = cxLab.Content;
+                        break;
+                    case "CH":
+                        x.Content = chLab.Content;
+                        break;
+                    case "ch":
+                        x.Content = chLab.Content;
+                        break;
+                    case "CL":
+                        x.Content = clLab.Content;
+                        break;
+                    case "cl":
+                        x.Content = clLab.Content;
+                        break;
+                    case "DX":
+                        x.Content = dxLab.Content;
+                        break;
+                    case "dx":
+                        x.Content = dxLab.Content;
+                        break;
+                    case "DH":
+                        x.Content = dhLab.Content;
+                        break;
+                    case "dh":
+                        x.Content = dhLab.Content;
+                        break;
+                    case "DL":
+                        x.Content = dlLab.Content;
+                        break;
+                    case "dl":
+                        x.Content = dlLab.Content;
+                        break;
+                    default:
+                        commandInput.Text = val+"wtf";
+                        break;
+                }
             }
         }
         private int randomValues()
@@ -144,7 +261,7 @@ namespace projektArchitektura
         private void randomR_Click(object sender, RoutedEventArgs e)
         {
             int[] tab = new int[4];
-            for(int i = 0; i < tab.Length; i++)
+            for (int i = 0; i < tab.Length; i++)
             {
                 tab[i] = randomValues();
                 Thread.Sleep(50);
@@ -162,7 +279,7 @@ namespace projektArchitektura
             chLab.Content = cx2.Substring(0, cx2.Length - 8);
             dhLab.Content = dx2.Substring(0, dx2.Length - 8);
 
-            alLab.Content = ax2.Substring(ax2.Length-8);
+            alLab.Content = ax2.Substring(ax2.Length - 8);
             blLab.Content = bx2.Substring(bx2.Length - 8);
             clLab.Content = cx2.Substring(cx2.Length - 8);
             dlLab.Content = dx2.Substring(dx2.Length - 8);
