@@ -264,13 +264,106 @@ namespace projektArchitektura
                 }
                 else if (commandTab[0] == "SWAP" || commandTab[0] == "swap")
                 {
-                    axLab.Content = "dziala swap";
+                    if (commandTab[1] == "AX" || commandTab[1] == "ax")
+                    {
+                        if (commandTab[2] == "BX" || commandTab[2] == "bx")
+                        {
+                            SwapRegister(ax, bx);
+                            halfR(Revalue(ax), ah, al);
+                            halfR(Revalue(bx), bh, bl);
+                        }
+                        if (commandTab[2] == "CX" || commandTab[2] == "cx")
+                        {
+                            SwapRegister(ax, cx);
+                            halfR(Revalue(ax), ah, al);
+                            halfR(Revalue(cx), ch, cl);
+                        }
+                        if (commandTab[2] == "DX" || commandTab[2] == "dx")
+                        {
+                            SwapRegister(ax, dx);
+                            halfR(Revalue(ax), ah, al);
+                            halfR(Revalue(dx), dh, dl);
+                        }
+                    }
+                    else if (commandTab[1] == "BX" || commandTab[1] == "bx")
+                    {
+                        if (commandTab[2] == "AX" || commandTab[2] == "ax")
+                        {
+                            SwapRegister(bx,ax);
+                            halfR(Revalue(ax), ah, al);
+                            halfR(Revalue(bx), bh, bl);
+                        }
+                        if (commandTab[2] == "CX" || commandTab[2] == "cx")
+                        {
+                            SwapRegister(bx,cx);
+                            halfR(Revalue(cx), ch, cl);
+                            halfR(Revalue(bx), bh, bl);
+                        }
+                        if (commandTab[2] == "DX" || commandTab[2] == "dx")
+                        {
+                            SwapRegister(bx,dx);
+                            halfR(Revalue(dx), dh, dl);
+                            halfR(Revalue(bx), bh, bl);
+
+                        }
+                    }
+                    else if (commandTab[1] == "CX" || commandTab[1] == "cx")
+                    {
+                        if (commandTab[2] == "BX" || commandTab[2] == "bx")
+                        {
+                            SwapRegister(cx,bx);
+                            halfR(Revalue(cx), ch, cl);
+                            halfR(Revalue(bx), bh, bl);
+                        }
+                        if (commandTab[2] == "AX" || commandTab[2] == "ax")
+                        {
+                            SwapRegister(cx,ax);
+                            halfR(Revalue(cx), ch, cl);
+                            halfR(Revalue(ax), ah, al);
+                        }
+                        if (commandTab[2] == "DX" || commandTab[2] == "dx")
+                        {
+                            SwapRegister(cx,dx);
+                            halfR(Revalue(cx), ch, cl);
+                            halfR(Revalue(dx), dh, dl);
+                        }
+                    }
+                    else if (commandTab[1] == "DX" || commandTab[1] == "dx")
+                    {
+                        if (commandTab[2] == "BX" || commandTab[2] == "bx")
+                        {
+                            SwapRegister(dx,bx);
+                            halfR(Revalue(bx), bh, bl);
+                            halfR(Revalue(dx), dh, dl);
+                        }
+                        if (commandTab[2] == "CX" || commandTab[2] == "cx")
+                        {
+                            SwapRegister(dx,cx);
+                            halfR(Revalue(cx), ch, cl);
+                            halfR(Revalue(dx), dh, dl);
+                        }
+                        if (commandTab[2] == "AX" || commandTab[2] == "ax")
+                        {
+                            SwapRegister(dx,ax);
+                            halfR(Revalue(ax), ah, al);
+                            halfR(Revalue(dx), dh, dl);
+                        }
+                    }
+                    else
+                        commandInput.Text = "Niepoprawna komenda";
                 }
                 else
                 {
                     commandInput.Text = "Niepoprawna komenda";
                 }
 
+            }
+            void SwapRegister(Label first, Label second)
+            {
+                Label temp = new Label();
+                temp.Content = first.Content;
+                first.Content = second.Content;
+                second.Content = temp.Content;
             }
             void HalfRevalue(Label r, Label h, Label l)
             {
